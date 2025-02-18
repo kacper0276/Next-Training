@@ -1,10 +1,10 @@
 import { Menu } from "@/common/components/Menu";
 
-export default function ContactPage() {
+export default function TeamPage() {
   return (
     <div>
       <Menu />
-      <h1>Contact</h1>
+      <h1>Team</h1>
     </div>
   );
 }
