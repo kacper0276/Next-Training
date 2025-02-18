@@ -1,4 +1,10 @@
 import { Menu } from "@/common/components/Menu";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tytuł",
+  description: "OPIS",
+};
 
 export default function MainPage() {
   return (
