@@ -1,8 +1,9 @@
 import { Menu } from "@/common/components/Menu";
 import { Metadata } from "next";
+import { commonMetadata } from "@/common/shared-metadata";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: `Contact ${commonMetadata.title}`,
   description: "OPIS Contact",
 };
 
