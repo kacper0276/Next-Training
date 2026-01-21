@@ -1,4 +1,3 @@
-import { Menu } from "@/common/components/Menu";
 import { Metadata } from "next";
 
 export function generateMetadata(): Metadata {
@@ -11,7 +10,6 @@ export function generateMetadata(): Metadata {
 export default function TeamPage() {
   return (
     <div>
-      <Menu />
       <h1>Team</h1>
     </div>
   );

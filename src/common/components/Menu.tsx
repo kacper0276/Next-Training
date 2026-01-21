@@ -12,6 +12,9 @@ export function Menu() {
       <li>
         <Link href="/contact/team">Team</Link>
       </li>
+      <li>
+        <Link href="/contact/about-us">About Us</Link>
+      </li>
     </ul>
   );
 }
