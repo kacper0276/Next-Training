@@ -1,0 +1,15 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3004"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

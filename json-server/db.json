@@ -1,0 +1,100 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 1,
+      "tags": ["json", "server", "node"],
+      "reactions": 5
+    },
+    {
+      "id": 2,
+      "title": "lowdb",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 1,
+      "tags": ["lowdb", "database", "json"],
+      "reactions": 3
+    },
+    {
+      "id": 3,
+      "title": "express",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 2,
+      "tags": ["express", "node", "framework"],
+      "reactions": 8
+    },
+    {
+      "id": 4,
+      "title": "nodejs",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 2,
+      "tags": ["nodejs", "javascript", "runtime"],
+      "reactions": 10
+    },
+    {
+      "id": 5,
+      "title": "react",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 3,
+      "tags": ["react", "javascript", "library"],
+      "reactions": 15
+    },
+    {
+      "id": 6,
+      "title": "vue",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 3,
+      "tags": ["vue", "javascript", "framework"],
+      "reactions": 7
+    },
+    {
+      "id": 7,
+      "title": "angular",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 4,
+      "tags": ["angular", "typescript", "framework"],
+      "reactions": 12
+    },
+    {
+      "id": 8,
+      "title": "svelte",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 4,
+      "tags": ["svelte", "javascript", "framework"],
+      "reactions": 4
+    },
+    {
+      "id": 9,
+      "title": "nextjs",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 5,
+      "tags": ["nextjs", "react", "framework"],
+      "reactions": 20
+    },
+    {
+      "id": 10,
+      "title": "nuxtjs",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 5,
+      "tags": ["nuxtjs", "vue", "framework"],
+      "reactions": 6
+    },
+    {
+      "id": 11,
+      "title": "gatsby",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 5,
+      "tags": ["gatsby", "react", "framework"],
+      "reactions": 9
+    },
+    {
+      "id": 12,
+      "title": "ember",
+      "body": "lorem ipsum dolor sit amet",
+      "userId": 6,
+      "tags": ["ember", "javascript", "framework"],
+      "reactions": 2
+    }
+  ]
+}
