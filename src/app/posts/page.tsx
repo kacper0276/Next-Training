@@ -23,6 +23,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 
   const response = await fetch(
     `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}`,
+    { next: { revalidate: 10 } },
   );
 
   if (!response.ok) {
