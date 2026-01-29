@@ -4,6 +4,7 @@ import { commonMetadata } from "@/common/shared-metadata";
 import { Metadata } from "next";
 import { Pagination } from "@/common/components/Pagination/Pagination";
 import { SearchParams } from "@/types/next.type";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `Posts ${commonMetadata.title}`,
@@ -41,6 +42,8 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
         return (
           <div className={styles.item} key={post.id}>
             {post.title}
+            <br />
+            <Link href={`/posts/${post.id}`}>Read more</Link>
           </div>
         );
       })}
