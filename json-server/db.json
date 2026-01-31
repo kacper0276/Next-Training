@@ -96,5 +96,17 @@
       "tags": ["ember", "javascript", "framework"],
       "reactions": 2
     }
+  ],
+  "contents": [
+    {
+      "id": "info-page/prices",
+      "title": "Prices",
+      "body": "This is the prices page content."
+    },
+    {
+      "id": "info-page/services",
+      "title": "Services",
+      "body": "This is the services page content."
+    }
   ]
 }
