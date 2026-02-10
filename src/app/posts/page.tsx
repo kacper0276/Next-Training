@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { Pagination } from "@/common/components/Pagination/Pagination";
 import { SearchParams } from "@/types/next.type";
 import Link from "next/link";
+import { fetchClient } from "@/common/clientApi/fetchClient";
 
 export const metadata: Metadata = {
   title: `Posts ${commonMetadata.title}`,
@@ -22,16 +23,10 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
     page = Number(searchParams.page) || 1;
   }
 
-  const response = await fetch(
+  const posts: Posts = await fetchClient<Posts>(
     `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}`,
-    { next: { revalidate: 10 } },
+    { revalidate: 5 },
   );
-
-  if (!response.ok) {
-    throw new Error("problem with fetching posts");
-  }
-
-  const posts: Posts = await response.json();
 
   const POSTS_TOTAL = posts.length;
 
