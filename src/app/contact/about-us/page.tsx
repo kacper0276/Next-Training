@@ -1,3 +1,4 @@
+import { LastNews } from "@/common/components/LastNews/LastNews";
 import styles from "./about-us.module.scss";
 
 export default function AboutUsPage() {
@@ -28,6 +29,8 @@ export default function AboutUsPage() {
           accident, sometimes on purpose (injected humour and the like).
         </p>
       </section>
+
+      <LastNews />
 
       <section className={`${styles.text} ${styles.revert}`}>
         <p>

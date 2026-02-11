@@ -6,6 +6,7 @@ import { Pagination } from "@/common/components/Pagination/Pagination";
 import { SearchParams } from "@/types/next.type";
 import Link from "next/link";
 import { fetchClient } from "@/common/clientApi/fetchClient";
+import { POSTS_TOTAL } from "@/common/config";
 
 export const metadata: Metadata = {
   title: `Posts ${commonMetadata.title}`,
@@ -27,8 +28,6 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
     `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}`,
     { revalidate: 5 },
   );
-
-  const POSTS_TOTAL = posts.length;
 
   return (
     <div>

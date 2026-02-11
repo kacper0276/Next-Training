@@ -1,0 +1,25 @@
+.last-news {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  .item {
+    flex-basis: 250px;
+    min-height: 120px;
+    padding: 10px 15px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-link {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
