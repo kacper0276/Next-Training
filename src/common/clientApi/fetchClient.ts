@@ -24,3 +24,20 @@ export async function fetchClient<T = unknown>(
 
   return data;
 }
+
+export async function updateClient(
+  method: "POST" | "PATCH",
+  url: string,
+  data: unknown,
+) {
+  const resp = await fetch(url, {
+    method,
+    body: JSON.stringify(data),
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+  });
+
+  if (!resp.ok) {
+    console.log(resp);
+    throw new Error("Problem with update data");
+  }
+}

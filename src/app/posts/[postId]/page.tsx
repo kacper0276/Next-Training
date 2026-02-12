@@ -2,6 +2,7 @@ import { Post } from "@/types/post.type";
 import { NextPage } from "next";
 import styles from "./post.module.scss";
 import { fetchClient } from "@/common/clientApi/fetchClient";
+import { LikePost } from "../LikePost";
 
 type PostPageProps = {
   params: {
@@ -37,6 +38,10 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
           ))}
         </div>
       )}
+
+      <div className={styles.likes}>Likes: {post.reactions}</div>
+
+      <LikePost postId={post.id} />
     </div>
   );
 };
