@@ -1,16 +1,17 @@
 import { notFound } from "next/navigation";
 
 type FetchClientOptions = {
-  revalidate: number;
+  revalidate?: number;
+  tags?: string[];
 };
 
 export async function fetchClient<T = unknown>(
   url: string,
   options: FetchClientOptions = { revalidate: 10 },
 ): Promise<T> {
-  const { revalidate } = options;
+  const { revalidate, tags } = options;
 
-  const response = await fetch(url, { next: { revalidate } });
+  const response = await fetch(url, { next: { revalidate, tags } });
 
   if (!response.ok && response.status === 404) {
     throw notFound();
@@ -40,4 +41,8 @@ export async function updateClient(
     console.log(resp);
     throw new Error("Problem with update data");
   }
+}
+
+export function generatePostTag(postId: number): string {
+  return `post${postId}`;
 }

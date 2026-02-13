@@ -1,7 +1,7 @@
 import { Post } from "@/types/post.type";
 import { NextPage } from "next";
 import styles from "./post.module.scss";
-import { fetchClient } from "@/common/clientApi/fetchClient";
+import { fetchClient, generatePostTag } from "@/common/clientApi/fetchClient";
 import { LikePost } from "../LikePost";
 
 type PostPageProps = {
@@ -11,7 +11,9 @@ type PostPageProps = {
 };
 
 const fetchPost = async (postId: number): Promise<Post> => {
-  return await fetchClient<Post>(`http://localhost:3004/posts/${postId}`);
+  return await fetchClient<Post>(`http://localhost:3004/posts/${postId}`, {
+    tags: [generatePostTag(postId)],
+  });
 };
 
 export const generateMetadata = async ({ params }: PostPageProps) => {
