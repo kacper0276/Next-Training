@@ -24,8 +24,15 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
     page = Number(searchParams.page) || 1;
   }
 
+  const queryParams = new URLSearchParams({
+    _limit: `${POSTS_PER_PAGE}`,
+    _page: `${page}`,
+    _order: "desc",
+    _sort: "id",
+  });
+
   const posts: Posts = await fetchClient<Posts>(
-    `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}&_order=desc&_sort=id`,
+    `http://localhost:3004/posts?${queryParams}`,
     { revalidate: 5 },
   );
 
