@@ -6,7 +6,8 @@ import {
   updateClient,
 } from "@/common/clientApi/fetchClient";
 import { Post } from "@/types/post.type";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const likePost = async (postId: number) => {
   const post = await fetchClient<Post>(`http://localhost:3004/posts/${postId}`);
@@ -15,4 +16,17 @@ export const likePost = async (postId: number) => {
   });
   revalidateTag(generatePostTag(postId));
   // revalidatePath(generatePostTag(postId)) - Tak samo jak tag (warto użyć gdy mamy wiele danych do odświeżenia)
+};
+
+export const savePost = async (formData: FormData) => {
+  const data: { [key: string]: unknown } = {};
+  for (const pair of formData.entries()) {
+    data[pair[0]] = pair[1];
+  }
+  data.tags = data.tags ? (data.tags as string).split(",") : {};
+  data.reactions = 0;
+
+  await updateClient("POST", "http://localhost:3004/posts", data);
+  revalidatePath("/posts");
+  redirect("/posts");
 };

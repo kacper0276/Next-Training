@@ -25,17 +25,20 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
   }
 
   const posts: Posts = await fetchClient<Posts>(
-    `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}`,
+    `http://localhost:3004/posts?_limit=${POSTS_PER_PAGE}&_page=${page}&_order=desc&_sort=id`,
     { revalidate: 5 },
   );
 
   return (
     <div>
-      Posts Page
+      <div className="headline">
+        Posts Page
+        <Link href="/posts/new">New POst</Link>
+      </div>
       {posts.map((post: Post) => {
         return (
           <div className={styles.item} key={post.id}>
-            {post.title}
+            #(${post.id}) {post.title}
             <br />
             <Link href={`/posts/${post.id}`}>Read more</Link>
           </div>

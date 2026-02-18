@@ -3,3 +3,9 @@
   border-bottom: 1px solid gray;
   margin: 24px;
 }
+
+.headline {
+  display: flex;
+  flex: row-wrap;
+  justify-content: space-between;
+}
