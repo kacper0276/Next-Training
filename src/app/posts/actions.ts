@@ -40,10 +40,15 @@ export const savePost = async (state: FormState, formData: FormData) => {
     return newState;
   }
 
-  data.tags = data.tags ? (data.tags as string).split(",") : {};
-  data.reactions = 0;
+  const dataToSend = {
+    ...parseResult.data,
+    tags: parseResult.data.tags
+      ? (parseResult.data.tags as string).split(",")
+      : [],
+    reactions: 0,
+  };
 
-  await updateClient("POST", "http://localhost:3004/posts", data);
+  await updateClient("POST", "http://localhost:3004/posts", dataToSend);
   revalidatePath("/posts");
   redirect("/posts");
 };

@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { savePost } from "../actions";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { FormState } from "@/types/post.type";
 import { ErrorForm } from "@/common/components/ErrorForm/ErrorForm";
 
@@ -13,6 +13,15 @@ export const FormPost: FC = () => {
 
   return (
     <form action={formAction}>
+      <FormContent state={state} />
+    </form>
+  );
+};
+
+const FormContent: FC<{ state: FormState }> = ({ state }) => {
+  const { pending } = useFormStatus();
+  return (
+    <>
       <div>
         <label>Title:</label>
         <input type="text" name="title" />
@@ -29,7 +38,7 @@ export const FormPost: FC = () => {
         <input type="text" name="tags" />
         <ErrorForm errors={state.errors.tags} />
       </div>
-      <button>Save</button>
-    </form>
+      <button disabled={pending}>{pending ? "Saving..." : "Save"}</button>
+    </>
   );
 };
