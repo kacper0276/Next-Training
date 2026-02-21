@@ -8,6 +8,13 @@ import {
 import { Post } from "@/types/post.type";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { z } from "zod";
+
+const Validation = z.object({
+  title: z.string().min(3),
+  body: z.string().min(3),
+  tags: z.string(),
+});
 
 export const likePost = async (postId: number) => {
   const post = await fetchClient<Post>(`http://localhost:3004/posts/${postId}`);
@@ -23,6 +30,13 @@ export const savePost = async (formData: FormData) => {
   for (const pair of formData.entries()) {
     data[pair[0]] = pair[1];
   }
+
+  const parseResult = Validation.safeParse(data);
+
+  if (!parseResult.success) {
+    return;
+  }
+
   data.tags = data.tags ? (data.tags as string).split(",") : {};
   data.reactions = 0;
 
