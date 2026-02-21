@@ -8,3 +8,5 @@ export type Post = {
 };
 
 export type Posts = Post[];
+
+export type FormState = { errors: { [key: string]: string[] } };

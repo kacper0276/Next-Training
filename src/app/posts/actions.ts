@@ -5,7 +5,7 @@ import {
   generatePostTag,
   updateClient,
 } from "@/common/clientApi/fetchClient";
-import { Post } from "@/types/post.type";
+import { FormState, Post } from "@/types/post.type";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -25,7 +25,7 @@ export const likePost = async (postId: number) => {
   // revalidatePath(generatePostTag(postId)) - Tak samo jak tag (warto użyć gdy mamy wiele danych do odświeżenia)
 };
 
-export const savePost = async (formData: FormData) => {
+export const savePost = async (state: FormState, formData: FormData) => {
   const data: { [key: string]: unknown } = {};
   for (const pair of formData.entries()) {
     data[pair[0]] = pair[1];
@@ -34,7 +34,10 @@ export const savePost = async (formData: FormData) => {
   const parseResult = Validation.safeParse(data);
 
   if (!parseResult.success) {
-    return;
+    const newState: FormState = {
+      errors: parseResult.error.flatten().fieldErrors,
+    };
+    return newState;
   }
 
   data.tags = data.tags ? (data.tags as string).split(",") : {};
