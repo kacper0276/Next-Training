@@ -18,6 +18,8 @@ type PostsPageProps = {} & SearchParams;
 const POSTS_PER_PAGE = 10;
 
 export default async function PostsPage({ searchParams }: PostsPageProps) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   let page: number = 1;
 
   if (searchParams?.page) {
