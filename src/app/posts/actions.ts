@@ -16,6 +16,8 @@ const Validation = z.object({
   tags: z.string(),
 });
 
+export type PostData = z.infer<typeof Validation>;
+
 export const likePost = async (postId: number) => {
   const post = await fetchClient<Post>(`http://localhost:3004/posts/${postId}`);
   await updateClient("PATCH", `http://localhost:3004/posts/${postId}`, {
@@ -40,15 +42,26 @@ export const savePost = async (state: FormState, formData: FormData) => {
     return newState;
   }
 
+  const id = Number(formData.get("id"));
+
   const dataToSend = {
     ...parseResult.data,
     tags: parseResult.data.tags
       ? (parseResult.data.tags as string).split(",")
       : [],
-    reactions: 0,
+    reactions: id ? undefined : 0,
   };
 
-  await updateClient("POST", "http://localhost:3004/posts", dataToSend);
+  await updateClient(
+    id ? "PATCH" : "POST",
+    `http://localhost:3004/posts${id ? `/${id}` : ""}`,
+    dataToSend,
+  );
   revalidatePath("/posts");
+
+  if (id) {
+    revalidateTag(generatePostTag(id));
+  }
+
   redirect("/posts");
 };
