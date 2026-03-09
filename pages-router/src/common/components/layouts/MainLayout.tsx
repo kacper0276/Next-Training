@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import Menu from "../menu/Menu";
+import "@/styles/global.scss";
 
 type MainLayoutProps = {} & PropsWithChildren;
 
