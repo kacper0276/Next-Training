@@ -1,5 +1,11 @@
+import MainLayout from "@/common/components/layouts/MainLayout";
+
 const PostPage = () => {
-  return <div>Post Page</div>;
+  return (
+    <MainLayout>
+      <div>Posts Page</div>
+    </MainLayout>
+  );
 };
 
 export default PostPage;
