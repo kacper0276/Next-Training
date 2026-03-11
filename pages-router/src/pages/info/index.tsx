@@ -29,7 +29,7 @@ const InfoPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div>
         {pages.map((page) => (
           <div key={page.id}>
-            <Link href={`/info/...`}>{page.title}</Link>
+            <Link href={`/info/${page.id}`}>{page.title}</Link>
           </div>
         ))}
       </div>
