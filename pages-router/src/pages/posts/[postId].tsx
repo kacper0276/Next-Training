@@ -2,6 +2,7 @@ import { fetchClient } from "@/common/clientApi/fetchClient";
 import MainLayout from "@/common/components/layouts/MainLayout";
 import { Post } from "@/types/post.type";
 import { InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 
 type ServerSideProps = {
   params: {
@@ -26,6 +27,9 @@ const PostPage = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <MainLayout>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
       <h1>{post.title}</h1>
       <p>{post.body}</p>
     </MainLayout>

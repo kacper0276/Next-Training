@@ -2,6 +2,7 @@ import { fetchClient } from "@/common/clientApi/fetchClient";
 import MainLayout from "@/common/components/layouts/MainLayout";
 import { Posts } from "@/types/post.type";
 import { InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 import Link from "next/link";
 
 // Wykonuje się tylko po stronie serwera
@@ -20,6 +21,9 @@ const PostsPage = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <MainLayout>
+      <Head>
+        <title>Post page</title>
+      </Head>
       <div>Posts Page</div>
 
       {posts.map((post) => (
